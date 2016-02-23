@@ -34,8 +34,10 @@ dependencies {
     repositories {
         mavenLocal()
         mavenCentral()
+        jcenter()
     }
 
+    compile 'io.particle:cloudsdk:0.3.4'
     compile "com.android.support:appcompat-v7:23.1.1"
     compile "com.jakewharton:butterknife:6.1.0"
     compile "com.google.code.gson:gson:2.4"
