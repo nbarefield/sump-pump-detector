@@ -4,15 +4,12 @@ import android.app.Activity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import butterknife.bindView
 import com.pivotal.R
 import com.pivotal.ServiceLocator
 import com.pivotal.api.ApiGateway
-import com.pivotal.api.ApiMethod
-import com.pivotal.api.ApiRequest
 
-public class LoginActivity : Activity() {
+class LoginActivity : Activity() {
     var apiGateway: ApiGateway = ServiceLocator.apiGateway
 
     val loginEditText: EditText by bindView(R.id.loginEditText)

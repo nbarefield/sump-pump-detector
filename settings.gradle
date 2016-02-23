@@ -1,4 +1,3 @@
 rootProject.name = "sump-pump-detector"
 
 include "application"
-include "robolectric-tests"

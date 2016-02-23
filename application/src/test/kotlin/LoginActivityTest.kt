@@ -1,41 +1,29 @@
-package com.example.activity
+package com.pivotal.activity
 
-import android.app.Activity
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import com.example.R
-import com.example.api
-import com.example.api.ApiGateway
-import com.example.api.ApiMethod
-import com.example.api.ApiRequest
-import com.example.api.ApiResponse
-import com.example.login.LoginActivity
-import com.example.tasks.Promise
+import android.support.v7.appcompat.BuildConfig
+import com.pivotal.api.ApiGateway
+import com.pivotal.api.ApiMethod
+import com.pivotal.api.ApiRequest
+import com.pivotal.api.ApiResponse
+import com.pivotal.login.LoginActivity
+import com.pivotal.tasks.Promise
 import login.LoginApiResponse
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.Robolectric
-import org.robolectric.RobolectricTestRunner
+import org.robolectric.RobolectricGradleTestRunner
 import org.robolectric.annotation.Config
-
 import org.junit.Assert.assertThat
+import org.junit.Assert.assertNotNull
 import org.hamcrest.Matchers.*
 
-import java.util.concurrent.ExecutorService
-import java.util.concurrent.Executors
-import java.util.concurrent.ScheduledExecutorService
-import kotlin.test.assertFalse
-import kotlin.test.assertNotNull
-import kotlin.test.assertTrue
+@RunWith(RobolectricGradleTestRunner::class)
+@Config(constants = BuildConfig::class, manifest = "../../main/AndroidManifest.xml", sdk = intArrayOf(21), packageName = "com.pivotal")
+class ExampleRobolectricTest {
 
-RunWith(javaClass<RobolectricTestRunner>())
-Config(manifest = "../application/src/main/AndroidManifest.xml", emulateSdk = 18)
-public class LoginActivityTest {
-
-    Test
-    public fun testLogin() {
-        val activity = Robolectric.setupActivity(javaClass<LoginActivity>())
+    @Test
+    fun testLogin() {
+        val activity = Robolectric.setupActivity(LoginActivity::class.java)
         val fakeApiGateway = FakeApiGateway()
 
         activity.apiGateway = fakeApiGateway
@@ -48,7 +36,9 @@ public class LoginActivityTest {
         assertThat(fakeApiGateway.performedRequest?.method, equalTo(ApiMethod.POST))
         assertNotNull(fakeApiGateway.performedRequest?.body)
     }
+
 }
+
 
 class FakeApiGateway: ApiGateway {
     var performedRequest: ApiRequest<*>? = null
