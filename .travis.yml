@@ -1,6 +1,10 @@
 sudo: false
-
 language: android
+
+before_install:
+  - echo y | android update sdk --no-ui --all --filter "tools,platform-tools,android-23"
+  - echo y | android update sdk --no-ui --all --filter "build-tools-23.0.2"
+
 android:
   components:
     # The BuildTools version used by your project
